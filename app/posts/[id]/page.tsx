@@ -3,15 +3,15 @@ import { getPostData } from '@/app/lib/posts'
 
 export default async function Post() {
   // const pathname = usePathname()
-  const postData = getPostData('ssg')
+  const postData = await getPostData('ssg')
 
   return (
     <section>
-      {postData.title}
+      {postData?.title}
       <br />
       {postData.id}
       <br />
-      {postData.date}
+      {postData?.date}
       <br />
       <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </section>
