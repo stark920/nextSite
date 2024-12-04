@@ -1,19 +1,24 @@
-import { getSortedPostsData } from './lib/posts'
+import { getSortedPostsData } from '@/app/lib/posts'
+import Link from 'next/link'
+import { useTranslation } from '@/app/i18n'
 
-export default async function Home() {
+export default async function Home({ params }: { params: { locale: string } }) {
+  const { locale } = await params
+  const { t } = await useTranslation(locale)
   const allPostsData = getSortedPostsData()
 
   return (
     <section>
+      <div>{t('home')}</div>
       <h2>Blog</h2>
       <ul>
         {allPostsData.map(({ id, date, title }) => (
           <li key={id}>
-            {title}
-            <br />
-            {id}
-            <br />
-            {date}
+            <Link href={`/${locale}/posts/${id}`}>
+              {title}
+              <br />
+              {date}
+            </Link>
           </li>
         ))}
       </ul>

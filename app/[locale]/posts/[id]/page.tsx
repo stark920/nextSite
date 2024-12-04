@@ -1,9 +1,8 @@
-// import { usePathname } from 'next/navigation'
 import { getPostData } from '@/app/lib/posts'
 
-export default async function Post() {
-  // const pathname = usePathname()
-  const postData = await getPostData('ssg')
+export default async function Post({ params }: { params: { id: string }}) {
+  const { id } = await params
+  const postData = await getPostData(id)
 
   return (
     <section>

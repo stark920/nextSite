@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { Post } from '@/app/types/posts'
+import { Post } from '@/types/posts'
 // import { remark } from 'remark'
 // import html from 'remark-html'
 import { Remarkable } from 'remarkable';
