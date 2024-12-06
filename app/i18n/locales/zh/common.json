@@ -1,6 +1,19 @@
 {
   "enShort": "EN",
   "zhShort": "中文",
-  "home": "首頁",
-  "posts": "文章"
+  "posts": "文章",
+  "home": "關於我",
+  "socialMedia": "社群",
+  "fitness": "健身",
+  "calculator": "計算機",
+  "trainingPlan": "訓練計畫",
+  "recommendedResources": "推薦資源",
+  "blog": "Blog",
+  "articleList": "文章列表",
+  "readMore": "閱讀內容",
+  "tableOfContents": "目錄",
+  "vue": "Vue/Nuxt",
+  "react": "React/Next",
+  "web": "網頁相關",
+  "vue3ImageCropper": "Vue3 元件 - 圖片裁切(Image Cropper)"
 }

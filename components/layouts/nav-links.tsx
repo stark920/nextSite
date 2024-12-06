@@ -1,24 +1,25 @@
 'use client'
+
 import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
 } from '@/components/ui/sidebar'
 import { SidebarLink } from '@/types/sidebar'
+import { useTranslation } from '@/app/i18n/client'
 
-export function NavProjects({ projects }: { projects: SidebarLink[] }) {
-  const { isMobile } = useSidebar()
+export function NavLinks({ projects, locale }: { projects: SidebarLink[]; locale: string }) {
+  const { t } = useTranslation(locale)
   return (
     <SidebarGroup className='group-data-[collapsible=icon]:hidden'>
-      <SidebarGroupLabel>Projects</SidebarGroupLabel>
+      <SidebarGroupLabel>{t('socialMedia')}</SidebarGroupLabel>
       <SidebarMenu>
         {projects.map(item => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
-              <a href={item.url}>
+              <a href={item.url} target='_blank' rel='noreferrer noopener'>
                 <item.icon />
                 <span>{item.name}</span>
               </a>

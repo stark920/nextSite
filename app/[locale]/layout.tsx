@@ -1,4 +1,4 @@
-import './globals.css'
+import '../globals.css'
 import type { Metadata } from 'next'
 import { languages } from '@/app/i18n/settings'
 import { dir } from 'i18next'
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 }
 
 export function generateStaticParams() {
-  return languages.map((lng) => ({ lng }))
+  return languages.map(lng => ({ lng }))
 }
 
 export default async function RootLayout({
@@ -28,7 +28,12 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params
   return (
-    <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={dir(locale)}
+      suppressHydrationWarning
+      className='scroll-pt-14 scroll-smooth'
+    >
       <body>
         <ThemeProvider
           attribute='class'
@@ -37,12 +42,10 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <SidebarProvider>
-            <AppSidebar />
+            <AppSidebar locale={locale} />
             <SidebarInset>
               <AppHeader locale={locale} />
-              <div className='container px-4 py-2'>
-                {children}
-              </div>
+              <div className='container mx-auto px-6 lg:px-8'>{children}</div>
             </SidebarInset>
           </SidebarProvider>
         </ThemeProvider>

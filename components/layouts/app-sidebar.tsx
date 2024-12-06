@@ -3,9 +3,9 @@
 import * as React from 'react'
 import { FaDumbbell, FaBlog, FaInstagram, FaGithub, FaChild } from 'react-icons/fa'
 import { NavMain } from './nav-main'
-import { NavProjects } from './nav-projects'
 import { NavUser } from './nav-user'
 import { NavLogo } from './nav-logo'
+import { NavLinks } from './nav-links'
 import {
   Sidebar,
   SidebarContent,
@@ -22,15 +22,15 @@ const navLinks: SidebarNav[] = [
     icon: FaDumbbell,
     items: [
       {
-        title: 'History',
+        title: 'calculator',
         url: '#',
       },
       {
-        title: 'Starred',
+        title: 'trainingPlan',
         url: '#',
       },
       {
-        title: 'Settings',
+        title: 'recommendedResources',
         url: '#',
       },
     ],
@@ -39,50 +39,44 @@ const navLinks: SidebarNav[] = [
     title: 'blog',
     url: '#',
     icon: FaBlog,
-    items: [
-      {
-        title: 'Genesis',
-        url: '#',
-      },
-      {
-        title: 'Explorer',
-        url: '#',
-      },
-      {
-        title: 'Quantum',
-        url: '#',
-      },
-    ],
+    items: ['vue', 'react', 'web'].map(title => ({
+      title,
+      url: `/posts/${title}`
+    }))
   },
 ]
 
-const externalLinks = [
+const externalLinks: SidebarLink[] = [
   {
     name: 'Github',
-    url: '#',
+    url: 'https://github.com/',
     icon: FaGithub,
   },
   {
     name: 'Instagram',
-    url: '#',
+    url: 'https://www.instagram.com/',
     icon: FaInstagram,
   },
   {
     name: 'iThome',
-    url: '#',
+    url: 'https://www.ithome.com.tw/',
     icon: FaChild,
   },
 ]
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
+  locale: string
+}
+
+export function AppSidebar({ locale, ...props }: AppSidebarProps) {
   return (
     <Sidebar collapsible='icon' {...props}>
       <SidebarHeader>
         <NavLogo />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={navLinks} />
-        <NavProjects projects={externalLinks} />
+        <NavMain items={navLinks} locale={locale} />
+        <NavLinks projects={externalLinks} locale={locale} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser />

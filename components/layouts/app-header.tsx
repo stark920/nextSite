@@ -15,6 +15,7 @@ import { SidebarTrigger } from '@/components/ui/sidebar'
 import { ThemeSelect } from './theme-select'
 import { LocaleSelect } from './locale-select'
 import { useTranslation } from '@/app/i18n/client'
+import { cn } from '@/lib/utils'
 
 export function AppHeader({ locale }: { locale: string }) {
   const { t } = useTranslation(locale)
@@ -26,21 +27,25 @@ export function AppHeader({ locale }: { locale: string }) {
   currentPathList.splice(0, 2)
 
   return (
-    <header className='sticky top-0 flex h-14 shrink-0 items-center gap-2 bg-background/75 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12'>
+    <header className='sticky top-0 z-10 flex h-14 shrink-0 items-center gap-2 bg-background transition-[width] ease-linear'>
       <div className='flex w-full items-center justify-between gap-2 px-4'>
         <div className='flex items-center gap-2'>
           <SidebarTrigger className='-ml-1' />
           <Separator orientation='vertical' className='mr-2 h-4' />
           <Breadcrumb>
             <BreadcrumbList>
-              <BreadcrumbItem className='hidden md:block'>
-                <BreadcrumbLink href='/'>{t(firstPath)}</BreadcrumbLink>
+              <BreadcrumbItem className='hidden lg:block'>
+                <BreadcrumbLink href={firstPath === 'home' ? '/' : `/${firstPath}`}>
+                  {t(firstPath)}
+                </BreadcrumbLink>
               </BreadcrumbItem>
-              {currentPathList.map(path => (
+              {currentPathList.map((path, index) => (
                 <React.Fragment key={path}>
-                  <BreadcrumbSeparator className='hidden md:block' />
+                  <BreadcrumbSeparator className={cn(index === 0 && 'hidden lg:block')} />
                   <BreadcrumbItem>
-                    <BreadcrumbPage>{path}</BreadcrumbPage>
+                    <BreadcrumbPage className='max-lg:max-w-20 max-lg:truncate'>
+                      {t(path)}
+                    </BreadcrumbPage>
                   </BreadcrumbItem>
                 </React.Fragment>
               ))}

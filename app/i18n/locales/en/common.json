@@ -1,6 +1,19 @@
 {
   "enShort": "EN",
   "zhShort": "中文",
-  "home": "Home",
-  "posts": "Posts"
+  "posts": "Posts",
+  "home": "About",
+  "socialMedia": "Social Media",
+  "fitness": "Fitness",
+  "calculator": "Calculator",
+  "trainingPlan": "Training Plan",
+  "recommendedResources": "Recommended Resources",
+  "blog": "Blog",
+  "articleList": "Article List",
+  "readMore": "Read More",
+  "tableOfContents": "On this page",
+  "vue": "Vue/Nuxt",
+  "react": "React/Next",
+  "web": "Web, etc",
+  "vue3ImageCropper": "Vue3 Component - Image Cropper"
 }

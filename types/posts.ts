@@ -1,9 +1,11 @@
-export type PostHead = {
+export interface PostHead {
   title: string
   date: string
-  [key: string]: string
+  description: string
+  order: number
+  tags: string
 }
 
-export type Post = {
+export interface Post extends PostHead {
   id: string
-} & PostHead
+} 
