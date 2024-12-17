@@ -3,14 +3,14 @@ import { Button } from '@/components/ui/button'
 
 export default async function NotFound() {
   return (
-    <div className='flex flex-col gap-4 h-[calc(100dvh-3.5rem)] items-center justify-center'>
-        <h2>Not Found</h2>
-        <p>Could not find requested resource</p>
-        <Link href="/">
-          <Button>
-            Home
-          </Button>
-        </Link>
+    <div className='flex h-[calc(100dvh-3.5rem)] flex-col items-center justify-center gap-4'>
+      <h2>Not Found</h2>
+      <p>Could not find requested resource</p>
+      <Link href='/'>
+        <Button asChild>
+          <span>Home</span>
+        </Button>
+      </Link>
     </div>
   )
 }

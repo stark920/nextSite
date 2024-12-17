@@ -7,6 +7,7 @@ import { AppSidebar } from '@/components/layouts/app-sidebar'
 import { AppHeader } from '@/components/layouts/app-header'
 import { ThemeProvider } from '@/components/layouts/theme-provider'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
+import ProgressBarProvider from '@/components/layouts/progress-bar-provider'
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_SITE_TITLE,
@@ -41,13 +42,15 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SidebarProvider>
-            <AppSidebar locale={locale} />
-            <SidebarInset>
-              <AppHeader locale={locale} />
-              <div className='container mx-auto px-6 lg:px-8'>{children}</div>
-            </SidebarInset>
-          </SidebarProvider>
+          <ProgressBarProvider>
+            <SidebarProvider>
+              <AppSidebar locale={locale} />
+              <SidebarInset>
+                <AppHeader locale={locale} />
+                <div className='container mx-auto px-6 lg:px-8 py-6'>{children}</div>
+              </SidebarInset>
+            </SidebarProvider>
+          </ProgressBarProvider>
         </ThemeProvider>
       </body>
     </html>

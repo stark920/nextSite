@@ -12,6 +12,7 @@ body {
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
+    --card-active: 210 40% 89%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
     --primary: 149 80% 90%;
@@ -47,6 +48,7 @@ body {
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
+    --card-active: 210 40% 10%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
     --primary: 194 70% 27%;
@@ -84,5 +86,21 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .copy-btn {
+    @apply absolute top-2 right-2 rounded-md p-1.5 m-0 flex items-center justify-center
+  }
+
+  .copy-btn > svg {
+    @apply size-5
+  }
+
+  .copy-btn-copied {
+    @apply bg-accent text-accent-foreground opacity-50 pointer-events-none
+  }
+
+  .copy-btn:hover {
+    @apply bg-accent text-accent-foreground
   }
 }

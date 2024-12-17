@@ -43,9 +43,17 @@ export function AppHeader({ locale }: { locale: string }) {
                 <React.Fragment key={path}>
                   <BreadcrumbSeparator className={cn(index === 0 && 'hidden lg:block')} />
                   <BreadcrumbItem>
-                    <BreadcrumbPage className='max-lg:max-w-20 max-lg:truncate'>
-                      {t(path)}
-                    </BreadcrumbPage>
+                    {
+                      path.includes('-')
+                      ?
+                      <BreadcrumbPage className='max-lg:max-w-20 max-lg:truncate'>
+                        {t(path.replace(/.*-/, ''))}
+                      </BreadcrumbPage>
+                      :
+                      <BreadcrumbLink href={`/${firstPath}/${path}`}>
+                        {t(path)}
+                      </BreadcrumbLink>
+                    }
                   </BreadcrumbItem>
                 </React.Fragment>
               ))}

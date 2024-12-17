@@ -22,18 +22,20 @@ export function NavMain({ items, locale }: { items: SidebarNav[]; locale: string
 
   return (
     <>
-      <SidebarGroup>
-        <SidebarGroupLabel>{t('posts')}</SidebarGroupLabel>
+      <SidebarGroup className='pb-0'>
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href='/'>
-              <SidebarMenuButton tooltip={t('home')}>
+            <SidebarMenuButton asChild tooltip={t('home')}>
+              <Link href='/'>
                 <FaHome />
                 {t('home')}
-              </SidebarMenuButton>
-            </Link>
+              </Link>
+            </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
+      </SidebarGroup>
+      <SidebarGroup className='pt-0'>
+        <SidebarGroupLabel>{t('posts')}</SidebarGroupLabel>
         <SidebarMenu>
           {items.map(item => (
             <Collapsible key={item.title} asChild defaultOpen className='group/collapsible'>
@@ -44,13 +46,16 @@ export function NavMain({ items, locale }: { items: SidebarNav[]; locale: string
                       <div className='grid gap-1 pt-1'>
                         <span>{t(item.title)}</span>
                         <Separator className='mb-1 bg-muted-foreground' />
-                        
+
                         {item.items?.map(subItem => (
-                          <Link href={subItem.url} key={subItem.title} className='-mx-1 px-2 py-1 text-sm rounded-md hover:bg-muted/50 duration-300'>
+                          <Link
+                            href={subItem.url}
+                            key={subItem.title}
+                            className='-mx-1 rounded-md px-2 py-1 text-sm duration-300 hover:bg-muted/50'
+                          >
                             {t(subItem.title)}
                           </Link>
                         ))}
-                        
                       </div>
                     }
                   >

@@ -1,10 +1,10 @@
 'use client'
 
-import { Tokens } from 'marked'
 import React, { useEffect, useState, useRef } from 'react'
 import { cn } from '@/lib/utils'
+import { HeadingData } from 'marked-gfm-heading-id'
 
-export default function PostNavigation({ headings }: { headings: Tokens.Heading[] }) {
+export default function PostNavigation({ headings }: { headings: HeadingData[] }) {
   const [activeId, setActiveId] = useState<string | null>(null)
   const observer = useRef<IntersectionObserver | null>(null)
 
@@ -35,20 +35,19 @@ export default function PostNavigation({ headings }: { headings: Tokens.Heading[
   return (
     <>
       {headings.map(heading => {
-        const id = heading.text.toLowerCase().replace(/\s+/g, '-')
         return (
-          <li key={id}>
+          <li key={heading.id}>
             <a
-              href={`#${id}`}
+              href={`#${heading.id}`}
               className={cn('text-sm hover:underline duration-300', {
-                'text-muted-foreground hover:text-foreground': activeId !== id,
-                'text-cyan-600': activeId === id,
+                'text-muted-foreground hover:text-foreground': activeId !== heading.id,
+                'text-cyan-600': activeId === heading.id,
               })}
               style={{
-                paddingLeft: `${heading.depth - 1}rem`,
+                paddingLeft: `${heading.level - 1}rem`,
               }}
             >
-              {id}
+              {heading.text}
             </a>
           </li>
         )
