@@ -1,5 +1,6 @@
 ---
 title: '使用 GoogleSheet 管理 i18n 字典檔'
+description: '介紹如何使用 GoogleSheet 維護 i18n 字典檔，並建置指令快速同步到專案中。'
 date: '2024-12-17'
 tags: 'i18n,GoogleSheet,Internationalization'
 ---

@@ -17,7 +17,11 @@ import { LocaleSelect } from './locale-select'
 import { useTranslation } from '@/app/i18n/client'
 import { cn } from '@/lib/utils'
 
-export function AppHeader({ locale }: { locale: string }) {
+type Props = {
+  locale: string
+}
+
+export function AppHeader({ locale }: Props) {
   const { t } = useTranslation(locale)
 
   const currentPathList = usePathname()
@@ -43,17 +47,13 @@ export function AppHeader({ locale }: { locale: string }) {
                 <React.Fragment key={path}>
                   <BreadcrumbSeparator className={cn(index === 0 && 'hidden lg:block')} />
                   <BreadcrumbItem>
-                    {
-                      path.includes('-')
-                      ?
+                    {path.includes('-') ? (
                       <BreadcrumbPage className='max-lg:max-w-20 max-lg:truncate'>
                         {t(path.replace(/.*-/, ''))}
                       </BreadcrumbPage>
-                      :
-                      <BreadcrumbLink href={`/${firstPath}/${path}`}>
-                        {t(path)}
-                      </BreadcrumbLink>
-                    }
+                    ) : (
+                      <BreadcrumbLink href={`/${firstPath}/${path}`}>{t(path)}</BreadcrumbLink>
+                    )}
                   </BreadcrumbItem>
                 </React.Fragment>
               ))}

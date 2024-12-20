@@ -4,7 +4,11 @@ import React, { useEffect, useState, useRef } from 'react'
 import { cn } from '@/lib/utils'
 import { HeadingData } from 'marked-gfm-heading-id'
 
-export default function PostNavigation({ headings }: { headings: HeadingData[] }) {
+type Props = {
+  headings: HeadingData[]
+}
+
+export default function PostNavigation({ headings }: Props) {
   const [activeId, setActiveId] = useState<string | null>(null)
   const observer = useRef<IntersectionObserver | null>(null)
 
@@ -36,10 +40,10 @@ export default function PostNavigation({ headings }: { headings: HeadingData[] }
     <>
       {headings.map(heading => {
         return (
-          <li key={heading.id}>
+          <li key={heading.id} className='min-w-0'>
             <a
               href={`#${heading.id}`}
-              className={cn('text-sm hover:underline duration-300', {
+              className={cn('block truncate text-sm duration-300 hover:underline', {
                 'text-muted-foreground hover:text-foreground': activeId !== heading.id,
                 'text-cyan-600': activeId === heading.id,
               })}

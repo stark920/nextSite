@@ -6,7 +6,12 @@ import { Button } from '@/components/ui/button'
 import { SidebarLink } from '@/types/sidebar'
 import { useTranslation } from '@/app/i18n/client'
 
-export function NavLinks({ links, locale }: { links: SidebarLink[]; locale: string }) {
+type Props = {
+  links: SidebarLink[]
+  locale: string
+}
+
+export function NavLinks({ links, locale }: Props) {
   const { t } = useTranslation(locale)
   return (
     <SidebarGroup className='group-data-[collapsible=icon]:hidden'>

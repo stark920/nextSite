@@ -10,7 +10,12 @@ import {
 import { useTranslation } from '@/app/i18n/client'
 import { SidebarLink } from '@/types/sidebar'
 
-export function NavProjects({ projects, locale }: { projects: SidebarLink[]; locale: string }) {
+type Props = {
+  projects: SidebarLink[]
+  locale: string
+}
+
+export function NavProjects({ projects, locale }: Props) {
   const { t } = useTranslation(locale)
   return (
     <SidebarGroup className='group-data-[collapsible=icon]:hidden'>

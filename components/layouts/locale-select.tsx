@@ -11,7 +11,11 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { useTranslation } from '@/app/i18n/client'
 
-export function LocaleSelect({ locale }: { locale: string }) {
+type Props = {
+  locale: string
+}
+
+export function LocaleSelect({ locale }: Props) {
   const { t } = useTranslation(locale)
   const currentPathname = usePathname()
   const router = useRouter()

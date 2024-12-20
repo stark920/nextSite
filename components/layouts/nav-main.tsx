@@ -17,7 +17,12 @@ import { Separator } from '@/components/ui/separator'
 import { SidebarNav } from '@/types/sidebar'
 import { useTranslation } from '@/app/i18n/client'
 
-export function NavMain({ items, locale }: { items: SidebarNav[]; locale: string }) {
+type Props = {
+  items: SidebarNav[]
+  locale: string
+}
+
+export function NavMain({ items, locale }: Props) {
   const { t } = useTranslation(locale)
 
   return (

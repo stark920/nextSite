@@ -12,15 +12,13 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { useTranslation } from '@/app/i18n'
 
-export default async function PostInfoCard({
-  post,
-  locale,
-  category,
-}: {
+type Props = {
   post: Post
   locale: string
   category: string
-}) {
+}
+
+export default async function PostInfoCard({ post, locale, category }: Props) {
   const { t } = await useTranslation(locale)
   const url = `/${locale}/posts/${category}/${post.id}`
   const theDate = new Date(post.date)

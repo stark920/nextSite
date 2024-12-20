@@ -16,15 +16,13 @@ import BackToTop from '@/components/back-to-top'
 import PostNavigation from './post-navigation'
 import PostContent from './post-content'
 
-export default async function Post({
-  id,
-  locale,
-  category,
-}: {
+type Props = {
   id: string
   locale: string
   category: string
-}) {
+}
+
+export default async function Post({ id, locale, category }: Props) {
   const { t } = await useTranslation(locale)
   const postData = await getPostData(category, id)
   if (!postData) notFound()
@@ -57,7 +55,7 @@ export default async function Post({
         authorName='Genos Huang'
         description={description}
       />
-      <section className='grid gap-x-8 lg:grid-cols-[1fr,200px]'>
+      <section className='grid gap-x-8 lg:grid-cols-[1fr,220px]'>
         <article className='prose prose-zinc min-w-0 max-w-none dark:prose-invert prose-pre:bg-[#282c34] prose-pre:p-0'>
           <h1 className='mb-0 text-cyan-600'>{t(id.replace(/.*-/, ''))}</h1>
           <small className='text-xs text-muted-foreground'>{dateFormatter.format(theDate)}</small>
@@ -92,13 +90,13 @@ export default async function Post({
           </div>
         </article>
         <nav className='relative px-4 max-lg:hidden'>
-          <ul className='sticky top-14 space-y-1'>
-            <div className='mb-4 font-bold'>{t('tableOfContents')}</div>
+          <ul className='sticky top-14 grid gap-2'>
+            <div className='mb-4 min-w-0 font-bold'>{t('tableOfContents')}</div>
             <PostNavigation headings={headings} />
           </ul>
         </nav>
         <Popover>
-          <PopoverTrigger className='lg:hidden fixed top-16 right-4'>
+          <PopoverTrigger className='fixed right-4 top-16 lg:hidden'>
             <FaListUl />
           </PopoverTrigger>
           <PopoverContent>

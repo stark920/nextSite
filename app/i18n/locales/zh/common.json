@@ -23,5 +23,7 @@
   "suggestRepo": "推薦工具",
   "suggestPost": "推薦文章",
   "googleSheetI18n": "使用 GoogleSheet 管理 i18n 字典檔",
+  "nuxtFetch": "了解 Nuxt 中 Data Fetching (API 串接)",
+  "nuxtEnv": "如何在 Nuxt 中使用環境變數（.env）",
   "vue3ImageCropper": "Vue3 元件 - 圖片裁切(Image Cropper)"
 }

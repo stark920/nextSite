@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { FaDumbbell, FaBlog, FaInstagram, FaGithub, FaChild } from 'react-icons/fa'
-import { FaScissors } from "react-icons/fa6"
+import { FaScissors } from 'react-icons/fa6'
 import { NavMain } from './nav-main'
 import { NavUser } from './nav-user'
 import { NavLogo } from './nav-logo'
@@ -61,8 +61,8 @@ const projects: SidebarLink[] = [
   {
     name: 'vue3-image-cropper',
     url: 'https://github.com/stark920/vue3-image-cropper',
-    icon: FaScissors
-  }
+    icon: FaScissors,
+  },
 ]
 
 const externalLinks: SidebarLink[] = [
@@ -78,11 +78,11 @@ const externalLinks: SidebarLink[] = [
   },
 ]
 
-type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
+type Props = {
   locale: string
-}
+} & React.ComponentProps<typeof Sidebar>
 
-export function AppSidebar({ locale, ...props }: AppSidebarProps) {
+export function AppSidebar({ locale, ...props }: Props) {
   return (
     <Sidebar collapsible='icon' {...props}>
       <SidebarHeader>

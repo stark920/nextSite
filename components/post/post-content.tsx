@@ -2,7 +2,11 @@
 
 import React, { useEffect } from 'react'
 
-const PostContent = ({ content }: { content: string }) => {
+type Props = {
+  content: string
+}
+
+const PostContent = ({ content }: Props) => {
   useEffect(() => {
     const codeBlocks = document.querySelectorAll('pre code')
 

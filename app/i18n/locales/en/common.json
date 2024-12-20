@@ -23,5 +23,7 @@
   "suggestRepo": "Recommended Repositories",
   "suggestPost": "Recommendation Articles",
   "googleSheetI18n": "Use GoogleSheet to manage i18n dictionary files",
+  "nuxtFetch": "Understanding Data Fetching (API Connection) in Nuxt",
+  "nuxtEnv": "How to use .env variables in Nuxt",
   "vue3ImageCropper": "Vue3 Component - Image Cropper"
 }
