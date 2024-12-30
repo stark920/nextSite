@@ -25,9 +25,9 @@ export function NavLogo() {
           </div>
           <div className='grid flex-1 text-left text-sm leading-tight'>
             <span className='truncate text-base font-semibold'>
-              前端健人
+              {process.env.NEXT_PUBLIC_SITE_TITLE}
             </span>
-            <span className='truncate text-xs'>Front-End Fitness</span>
+            <span className='truncate text-xs'>{process.env.NEXT_PUBLIC_SITE_DESCRIPTION}</span>
           </div>
         </div>
       </SidebarMenuItem>
