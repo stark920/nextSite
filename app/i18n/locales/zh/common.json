@@ -3,9 +3,21 @@
   "zhShort": "中文",
   "posts": "文章",
   "home": "關於我",
+  "aboutMe": "我是 Genos，一個熱愛重量訓練的前端工程師。",
+  "aboutMe-F2E": "前端寫最多的是 Vue3、Nuxt3，也寫一點 Next.js，但沒有 Vue 來的熟悉。",
+  "aboutMe-Workout": "重訓過去幾年以四項為主（蹲臥硬＋肩推），今年（2024）開始學舉重。",
+  "exp": "經歷",
+  "exp-1": "2021 - KJ 江凱傑北部健力三項研習",
+  "exp-2": "2021 - 高雄成吉思汗學習健力技巧",
+  "exp-3": "2022 - 怪獸訓練抗老化肌力及體能教練",
+  "exp-4": "2023 - 怪獸訓練肌力及體能教練 C 級",
+  "exp-5": "2024 - JOE 哥健力研習",
+  "exp-6": "2024 - 參加烈哥舉重教室團課",
+  "exp-7": "2024 - 怪獸訓練肌力及體能教練 B 級",
   "projects": "專案",
   "iThome": "iThome 鐵人賽文章",
   "vue3-image-cropper": "vue3-image-cropper",
+  "vue-storybook-starter": "vue-storybook-starter",
   "socialMedia": "社群",
   "fitness": "健身",
   "calculator": "計算機",
@@ -25,5 +37,5 @@
   "googleSheetI18n": "使用 GoogleSheet 管理 i18n 字典檔",
   "nuxtFetch": "了解 Nuxt 中 Data Fetching (API 串接)",
   "nuxtEnv": "如何在 Nuxt 中使用環境變數（.env）",
-  "vue3ImageCropper": "Vue3 元件 - 圖片裁切(Image Cropper)"
+  "vueStorybook": "Vue3 + Vite + Storybook + TailwindCSS + I18n 設定"
 }

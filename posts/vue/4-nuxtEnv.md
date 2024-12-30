@@ -13,7 +13,7 @@ Nuxt 的環境變數不是直接使用 dotenv，還要搭配 Runtime Config 設�
 
 Nuxt 內建 **dotenv**，不需要額外安裝，把 `.env` 檔案放在專案的根目錄中即可。
 
-```bash
+```sh
 # .env
 MY_ENV_VARIABLE=hello
 ```
@@ -86,7 +86,7 @@ Nuxt 會把特定名稱的環境變數匹配到對應的 Runtime Config 覆蓋�
 - `NUXT_PUBLIC_` 開頭對應到 runtimeConfig > public，後面的名稱轉為小寫開頭駝峰式命名（lower camel case）。
 - `NUXT_`開頭對應到 runtimeConfig，後面的名稱轉為小寫開頭駝峰式命名（lower camel case）。
 
-```bash
+```sh
 # .env
 # 官方範例：https://nuxt.com/docs/guide/going-further/runtime-config#example
 NUXT_API_SECRET=api_secret_token
@@ -109,7 +109,7 @@ export default defineNuxtConfig({
 
 前面提到 Nuxt 會自動覆蓋特定名稱的變數，**嚴格來說是只對名稱符合規則的環境變數生效**，在下面的例子中，使用一個不符合規則的環境變數名稱，接續再說明不同階段下執行結果。
 
-```bash
+```sh
 # .env
 BASE_URL=default
 ```

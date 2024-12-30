@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { FaDumbbell, FaBlog, FaInstagram, FaGithub, FaChild } from 'react-icons/fa'
+import { FaDumbbell, FaBlog, FaInstagram, FaGithub, FaChild, FaBook } from 'react-icons/fa'
 import { FaScissors } from 'react-icons/fa6'
 import { NavMain } from './nav-main'
 import { NavUser } from './nav-user'
@@ -25,19 +25,19 @@ const mainLinks: SidebarNav[] = [
     items: [
       {
         title: 'calculator',
-        url: '#',
+        url: '/calculator',
       },
       {
         title: 'trainingPlan',
         url: '#',
       },
-      {
-        title: 'antiAging',
-        url: '#',
-      },
+      // {
+      //   title: 'antiAging',
+      //   url: '#',
+      // },
       {
         title: 'recommendedResources',
-        url: '#',
+        url: '/recommendedResources',
       },
     ],
   },
@@ -62,6 +62,11 @@ const projects: SidebarLink[] = [
     name: 'vue3-image-cropper',
     url: 'https://github.com/stark920/vue3-image-cropper',
     icon: FaScissors,
+  },
+  {
+    name: 'vue-storybook-starter',
+    url: 'https://github.com/stark920/vue-storybook-starter',
+    icon: FaBook,
   },
 ]
 
