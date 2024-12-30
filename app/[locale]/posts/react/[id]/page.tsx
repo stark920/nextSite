@@ -4,7 +4,11 @@ import type { Metadata } from 'next'
 
 const category = 'react'
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}): Promise<Metadata> {
   const { id } = await params
   const postData = await getPostData(category, id)
   if (!postData) return {}
@@ -16,7 +20,11 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   }
 }
 
-export default async function ReactPost({ params }: { params: { id: string; locale: string } }) {
+export default async function ReactPost({
+  params,
+}: {
+  params: Promise<{ id: string; locale: string }>
+}) {
   const { id, locale } = await params
 
   return <Post id={id} locale={locale} category={category} />

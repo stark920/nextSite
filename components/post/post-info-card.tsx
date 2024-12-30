@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { useTranslation } from '@/app/i18n'
+import { getI18nText } from '@/app/i18n'
 
 type Props = {
   post: Post
@@ -19,7 +19,7 @@ type Props = {
 }
 
 export default async function PostInfoCard({ post, locale, category }: Props) {
-  const { t } = await useTranslation(locale)
+  const { t } = await getI18nText(locale)
   const url = `/${locale}/posts/${category}/${post.id}`
   const theDate = new Date(post.date)
   const dateFormatter = new Intl.DateTimeFormat(locale, {

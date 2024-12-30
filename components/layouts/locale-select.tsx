@@ -39,7 +39,7 @@ export function LocaleSelect({ locale }: Props) {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <div className='flex h-7 items-center gap-x-2 rounded-md px-2 hover:bg-accent hover:text-accent-foreground'>
-          <Globe className='h-[1.2rem] w-[1.2rem]' />
+          <Globe className='size-[1.2rem]' />
           {t(`${locale}Short`)}
           <span className='sr-only'>Select locale</span>
         </div>

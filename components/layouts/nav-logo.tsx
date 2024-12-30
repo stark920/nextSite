@@ -15,13 +15,7 @@ export function NavLogo() {
           )}
         >
           <div className='flex aspect-square size-8 items-center justify-center'>
-            <Image
-              src={logoPng}
-              alt='Logo'
-              width={32}
-              height={32}
-              className='rounded-lg'
-            />
+            <Image src={logoPng} alt='Logo' width={32} height={32} className='rounded-lg' />
           </div>
           <div className='grid flex-1 text-left text-sm leading-tight'>
             <span className='truncate text-base font-semibold'>

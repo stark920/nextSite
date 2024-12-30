@@ -1,12 +1,12 @@
-import { useTranslation } from '@/app/i18n'
+import { getI18nText } from '@/app/i18n'
 import { getSortedPostsData } from '@/app/lib/usePostData'
 import PostInfoCard from '@/components/post/post-info-card'
 
 const category = 'web'
 
-export default async function VuePosts({ params }: { params: { locale: string } }) {
+export default async function VuePosts({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const { t } = await useTranslation(locale)
+  const { t } = await getI18nText(locale)
   const allPostsData = getSortedPostsData(category)
   return (
     <section>

@@ -12,19 +12,19 @@ export default function Ffmi() {
   const [ffmi, setFfmi] = useState<string>('-')
 
   const calculateMetrics = () => {
-    const heightInMeters = bodyHeight / 100;
+    const heightInMeters = bodyHeight / 100
 
     // Lean = Weight in kg x (1.0 - (Body fat % / 100.0))
-    const lean = bodyWeight * (1.0 - bodyFat / 100.0);
+    const lean = bodyWeight * (1.0 - bodyFat / 100.0)
 
     // FFMI = (Lean / 2.2) / (Height in meters^2) x 2.20462
-    const ffmi = (lean / 2.2) / (heightInMeters ** 2) * 2.20462;
+    const ffmi = (lean / 2.2 / heightInMeters ** 2) * 2.20462
 
     // Adjusted FFMI = FFMI + (6.1 x (1.8 - Height in meters))
-    const adjustedFfmi = ffmi + (6.1 * (1.8 - heightInMeters));
+    const adjustedFfmi = ffmi + 6.1 * (1.8 - heightInMeters)
 
-    return { lean, ffmi, adjustedFfmi };
-  };
+    return { lean, ffmi, adjustedFfmi }
+  }
 
   useDebounce(
     () => {
@@ -74,10 +74,8 @@ export default function Ffmi() {
           />
         </div>
         FFMI: {ffmi}
-
         <div>
-
-        https://www.thecalculator.co/health/Fat-Free-Mass-Index-(FFMI)-Calculator-794.html
+          https://www.thecalculator.co/health/Fat-Free-Mass-Index-(FFMI)-Calculator-794.html
         </div>
       </div>
     </div>

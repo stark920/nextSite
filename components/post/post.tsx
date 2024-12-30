@@ -5,7 +5,7 @@ import DOMPurify from 'isomorphic-dompurify'
 import { ArticleJsonLd } from 'next-seo'
 import { notFound } from 'next/navigation'
 
-import { useTranslation } from '@/app/i18n'
+import { getI18nText } from '@/app/i18n'
 import { getPostData } from '@/app/lib/usePostData'
 
 import { FaAngleLeft, FaAngleRight, FaListUl } from 'react-icons/fa'
@@ -24,7 +24,7 @@ type Props = {
 }
 
 export default async function Post({ id, locale, category, showDate }: Props) {
-  const { t } = await useTranslation(locale)
+  const { t } = await getI18nText(locale)
   const postData = await getPostData(category, id)
   if (!postData) notFound()
 

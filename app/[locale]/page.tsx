@@ -1,10 +1,10 @@
-import { useTranslation } from '@/app/i18n'
+import { getI18nText } from '@/app/i18n'
 import Image from 'next/image'
 import avatarPic from '@/public/images/avatar.webp'
 
-export default async function Home({ params }: { params: { locale: string } }) {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const { t } = await useTranslation(locale)
+  const { t } = await getI18nText(locale)
   const expLength = Array.from({ length: 7 }, (_, i) => i + 1).reverse()
 
   return (

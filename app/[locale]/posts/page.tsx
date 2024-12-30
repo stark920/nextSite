@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import { getSortedPostsData } from '@/app/lib/usePostData'
-import { useTranslation } from '@/app/i18n'
+import { getI18nText } from '@/app/i18n'
 import { FaEllipsisH } from 'react-icons/fa'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { Button } from '@/components/ui/button'
 
-export default async function PostCategory({ params }: { params: { locale: string } }) {
+export default async function PostCategory({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const { t } = await useTranslation(locale)
+  const { t } = await getI18nText(locale)
   const cards = {
     vue: getSortedPostsData('vue').slice(0, 5),
     react: getSortedPostsData('react').slice(0, 5),

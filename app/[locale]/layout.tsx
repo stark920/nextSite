@@ -47,7 +47,7 @@ export default async function RootLayout({
               <AppSidebar locale={locale} />
               <SidebarInset>
                 <AppHeader locale={locale} />
-                <div className='container mx-auto px-6 lg:px-8 py-6'>{children}</div>
+                <div className='container mx-auto p-6 lg:px-8'>{children}</div>
               </SidebarInset>
             </SidebarProvider>
           </ProgressBarProvider>

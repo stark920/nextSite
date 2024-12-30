@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function Suggest({ params }: { params: { locale: string } }) {
+export default async function Suggest({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
 
   return <Post id='recommendedResources' locale={locale} category={category} showDate={false} />
