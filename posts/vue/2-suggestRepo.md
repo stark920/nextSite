@@ -27,12 +27,13 @@ tags: 'Vue'
 - [Zod](https://zod.dev/)：目前型別檢查首選。
 - [tailwindcss](https://tailwindcss.com/)：不用多說明了吧。
 - [Iconify](https://iconify.design/)：icon 集大成。
+- [Unhead](https://unhead.unjs.io/setup/vue/installation)：偶爾在 Vue 專案上也需要調整 Head 的內容，用 Unhead 操作起來輕鬆寫意。
 
 ---
 # UI 框架
 
 ## UI Lib Picker
-- [UI Lib Picker](https://ui-libs.vercel.app/)：起新專案遇到 UI 框架選擇困難時可以先到這裡，先依據專案需求篩選，選起來就容易多了。
+- [UI Lib Picker](https://ui-libs.vercel.app/)：起新專案遇到 UI 框架選擇困難時可以先到這依專案需求篩選，選起來就容易多了。
 
 ---
 # 可考慮

@@ -20,10 +20,9 @@ type Props = {
   id: string
   locale: string
   category: string
-  showDate?: boolean
 }
 
-export default async function Post({ id, locale, category, showDate }: Props) {
+export default async function Post({ id, locale, category }: Props) {
   const { t } = await getI18nText(locale)
   const postData = await getPostData(category, id)
   if (!postData) notFound()
@@ -59,9 +58,7 @@ export default async function Post({ id, locale, category, showDate }: Props) {
       <section className='grid gap-x-8 lg:grid-cols-[1fr,220px]'>
         <article className='prose prose-zinc min-w-0 max-w-none dark:prose-invert prose-pre:bg-[#282c34] prose-pre:p-0'>
           <h1 className='mb-0 text-cyan-600'>{t(id.replace(/.*-/, ''))}</h1>
-          {showDate !== false && (
-            <small className='text-xs text-muted-foreground'>{dateFormatter.format(theDate)}</small>
-          )}
+          <small className='text-xs text-muted-foreground'>{dateFormatter.format(theDate)}</small>
           <Separator className='my-6' />
           <PostContent content={cleanHtml} />
           <Separator className='my-6' />

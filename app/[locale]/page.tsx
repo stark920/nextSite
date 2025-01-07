@@ -30,13 +30,14 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <li>{t('aboutMe-F2E')}</li>
           <li>{t('aboutMe-Workout')}</li>
         </ul>
+        <span>{t('aboutMe-summarize')}</span>
 
         <h2>{t('exp')}</h2>
-        <ol>
+        <ul>
           {expLength.map(i => (
             <li key={i}>{t(`exp-${i}`)}</li>
           ))}
-        </ol>
+        </ul>
       </section>
     </div>
   )
