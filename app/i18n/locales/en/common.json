@@ -61,6 +61,21 @@
     "level4": "Moderate obesity 30~34",
     "level5": "Severe obesity Above 35"
   },
+  "bmr": {
+    "fullName": "Basal Metabolic Rate (BMR)",
+    "description": "BMR is the minimum number of calories required to sustain essential body functions (breathing, metabolism) for a day, excluding any additional physical activity."
+  },
+  "tdee": {
+    "fullName": "Total Daily Energy Expenditure (TDEE)",
+    "description": "TDEE is BMR plus the calories burned from daily activities and food intake.",
+    "activityLevel": "Activity Level",
+    "activityLevelDescription": "Since each person perceives intensity and frequency differently, the activity levels are difficult to quantify precisely and should be used as a simple reference.",
+    "level0": "Sedentary lifestyle (little to no exercise) TDEE = BMR x 1.2",
+    "level1": "Light activity (light exercise 1-3 days per week) TDEE = BMR x 1.375",
+    "level2": "Moderate activity (moderate exercise 3-5 days per week) TDEE = BMR x 1.55",
+    "level3": "High activity (intense exercise 6-7 days per week) TDEE = BMR x 1.725",
+    "level4": "Very high activity (high-intensity exercise or physical labor throughout the day) TDEE = BMR x 1.9"
+  },
   "trainingPlan": "Training Plan",
   "antiAging": "Anti-aging",
   "recommendedResources": "Recommended Resources",
