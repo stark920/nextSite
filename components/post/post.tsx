@@ -62,13 +62,13 @@ export default async function Post({ id, locale, category }: Props) {
           <Separator className='my-6' />
           <PostContent content={cleanHtml} />
           <Separator className='my-6' />
-          <div className='flex items-center justify-between'>
+          <div className='flex flex-wrap items-center justify-between'>
             <div>
               {previousPage && (
                 <Link href={`/${locale}/posts/${category}/${previousPage}`}>
-                  <Button variant='link' className='text-cyan-600' asChild>
-                    <span>
-                      <FaAngleLeft />
+                  <Button variant='link' className='text-cyan-600'>
+                    <FaAngleLeft />
+                    <span className='max-w-[70vw] truncate'>
                       {t(previousPage.replace(/.*-/, ''))}
                     </span>
                   </Button>
@@ -78,11 +78,9 @@ export default async function Post({ id, locale, category }: Props) {
             <div>
               {nextPage && (
                 <Link href={`/${locale}/posts/${category}/${nextPage}`}>
-                  <Button variant='link' className='text-cyan-600' asChild>
-                    <span>
-                      {t(nextPage.replace(/.*-/, ''))}
-                      <FaAngleRight />
-                    </span>
+                  <Button variant='link' className='text-cyan-600'>
+                    <span className='max-w-[70vw] truncate'>{t(nextPage.replace(/.*-/, ''))}</span>
+                    <FaAngleRight />
                   </Button>
                 </Link>
               )}
