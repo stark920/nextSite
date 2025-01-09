@@ -100,9 +100,7 @@ export default function Calculator({ locale }: { locale: string }) {
         <Input type='number' id='age' value={age} onChange={e => setAge(+e.target.value)} />
       </div>
       <div className='grid w-full max-w-sm items-center gap-1.5'>
-        <Label className={cn({ 'text-muted-foreground': !inputStates.sex })}>
-          {t('cal.sex')}
-        </Label>
+        <Label className={cn({ 'text-muted-foreground': !inputStates.sex })}>{t('cal.sex')}</Label>
         <RadioGroup value={sex} onValueChange={sex => setSex(sex)}>
           <div className='flex items-center space-x-2'>
             <RadioGroupItem value='male' id='male' />
@@ -162,7 +160,7 @@ export default function Calculator({ locale }: { locale: string }) {
 
       <h2 className='text-2xl font-bold'>{t('cal.result')}</h2>
       <Tabs value={tab} onValueChange={tab => setTab(tab)}>
-        <TabsList className='grid sm:inline-grid sm:w-max h-max grid-cols-2 sm:grid-cols-4'>
+        <TabsList className='grid h-max grid-cols-2 sm:inline-grid sm:w-max sm:grid-cols-4'>
           {Object.entries(tabItems).map(item => (
             <TabsTrigger value={item[0]} key={item[0]}>
               {item[0].toUpperCase()}
