@@ -91,196 +91,194 @@ export default function Calculator({ locale }: { locale: string }) {
   }
 
   return (
-    <div className='container'>
-      <div className='flex flex-1 flex-col gap-6 p-4 pt-0'>
-        <h2 className='text-2xl font-bold'>{t('cal.basicInfo')}</h2>
-        <div className='grid w-full max-w-sm items-center gap-1.5'>
-          <Label htmlFor='age' className={cn({ 'text-muted-foreground': !inputStates.age })}>
-            {t('cal.age')}
-          </Label>
-          <Input type='number' id='age' value={age} onChange={e => setAge(+e.target.value)} />
-        </div>
-        <div className='grid w-full max-w-sm items-center gap-1.5'>
-          <Label className={cn({ 'text-muted-foreground': !inputStates.sex })}>
-            {t('cal.sex')}
-          </Label>
-          <RadioGroup value={sex} onValueChange={sex => setSex(sex)}>
-            <div className='flex items-center space-x-2'>
-              <RadioGroupItem value='male' id='male' />
-              <Label htmlFor='male'>{t('cal.male')}</Label>
-            </div>
-            <div className='flex items-center space-x-2'>
-              <RadioGroupItem value='female' id='female' />
-              <Label htmlFor='female'>{t('cal.female')}</Label>
-            </div>
-          </RadioGroup>
-        </div>
-        <div className='grid w-full max-w-sm items-center gap-1.5'>
-          <Label
-            htmlFor='bodyHeight'
-            className={cn({ 'text-muted-foreground': !inputStates.height })}
-          >
-            {t('cal.bodyHeight')}（cm）
-          </Label>
-          <Input
-            type='number'
-            id='bodyHeight'
-            value={bodyHeight}
-            onChange={e => setBodyHeight(+e.target.value)}
-          />
-        </div>
-        <div className='grid w-full max-w-sm items-center gap-1.5'>
-          <Label
-            htmlFor='bodyWeight'
-            className={cn({ 'text-muted-foreground': !inputStates.weight })}
-          >
-            {t('cal.bodyWeight')}（kg）
-          </Label>
-          <Input
-            type='number'
-            id='bodyWeight'
-            value={bodyWeight}
-            onChange={e => setBodyWeight(+e.target.value)}
-          />
-        </div>
-        <div className='grid w-full max-w-sm items-center gap-1.5'>
-          <Label htmlFor='bodyFat' className={cn({ 'text-muted-foreground': !inputStates.fat })}>
-            {t('cal.bodyFat')}（%）
-          </Label>
-          <Input
-            type='number'
-            id='bodyFat'
-            max={100}
-            value={bodyFat}
-            onChange={e => setBodyFat(+e.target.value)}
-          />
-        </div>
-        <div>
-          <Button onClick={triggerCalculate}>{t('cal.calculate')}</Button>
-        </div>
-
-        <Separator className='my-4' />
-
-        <h2 className='text-2xl font-bold'>{t('cal.result')}</h2>
-        <Tabs value={tab} onValueChange={tab => setTab(tab)}>
-          <TabsList className='inline-grid size-max grid-cols-2 sm:grid-cols-4'>
-            {Object.entries(tabItems).map(item => (
-              <TabsTrigger value={item[0]} key={item[0]}>
-                {item[0].toUpperCase()}
-                {item[1] && `: ${item[1]}`}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          <TabsContent value='ffmi'>
-            <section className='py-6'>
-              <h3 className='mb-4 text-xl font-bold'>{t('ffmi.fullName')}</h3>
-              <p className='pl-4'>{t('ffmi.description')}</p>
-              <Separator className='my-6' />
-              <h4 className='mb-4 text-lg font-bold'>{t('cal.formula')}</h4>
-              <p className='pl-4'>
-                FFMI = ({t('cal.bodyWeight')} x (100% - {t('cal.bodyFat')})) / {t('cal.bodyHeight')}
-                <sup>2</sup>(m)
-                <br />
-                {t('ffmi.adjusted')} = FFMI + (6.1 x (1.8 - {t('cal.bodyHeight')}(m)))
-              </p>
-              <Separator className='my-6' />
-              <h4 className='mb-2 text-lg font-bold'>{t('cal.standard')}</h4>
-              <ul className='mb-4 inline-block list-inside list-disc'>
-                {ffmiRanges.map(({ label, condition }, index) => (
-                  <li key={index} className={cn('rounded-sm px-4 py-1', condition && 'bg-primary')}>
-                    {label}
-                  </li>
-                ))}
-              </ul>
-              <p className='text-lg'>
-                {t('cal.yourValue')}:{' '}
-                <span className='font-bold text-cyan-600'>{ffmi.toFixed(2)}</span>
-                <br />
-                {t('ffmi.adjusted')}:{' '}
-                <span className='font-bold text-cyan-600'>{affmi.toFixed(2)}</span>
-              </p>
-            </section>
-          </TabsContent>
-          <TabsContent value='bmi'>
-            <section className='py-6'>
-              <h3 className='mb-4 text-xl font-bold'>{t('bmi.fullName')}</h3>
-              <p className='pl-4'>{t('bmi.description')}</p>
-              <Separator className='my-6' />
-              <h4 className='mb-4 text-lg font-bold'>{t('cal.formula')}</h4>
-              <p className='pl-4'>
-                BMI = {t('cal.bodyWeight')}(kg) / {t('cal.bodyHeight')}(m)<sup>2</sup>
-              </p>
-              <Separator className='my-6' />
-              <h4 className='mb-2 text-lg font-bold'>{t('cal.standard')}</h4>
-              <ul className='mb-4 list-inside list-disc'>
-                {bmiRanges.map(({ label, condition }, index) => (
-                  <li key={index} className={cn('rounded-sm py-1 pl-4', condition && 'bg-primary')}>
-                    {label}
-                  </li>
-                ))}
-              </ul>
-              <p className='text-lg'>
-                {t('cal.yourValue')}:{' '}
-                <span className='font-bold text-cyan-600'>{bmi.toFixed(1)}</span>
-              </p>
-            </section>
-          </TabsContent>
-          <TabsContent value='bmr'>
-            <section className='py-6'>
-              <h3 className='mb-4 text-xl font-bold'>{t('bmr.fullName')}</h3>
-              <p className='pl-4'>{t('bmr.description')}</p>
-              <Separator className='my-6' />
-              <h4 className='mb-4 text-lg font-bold'>{t('cal.formula')}</h4>
-              <p className='pl-4'>
-                BMR({t('cal.male')})=(13.7×{t('cal.bodyWeight')}(kg))+(5.0×{t('cal.bodyHeight')}
-                (cm))-(6.8×{t('cal.age')})+66
-                <br />
-                BMR({t('cal.female')})=(9.6×{t('cal.bodyWeight')}(kg))+(1.8×{t('cal.bodyHeight')}
-                (cm))-(4.7×{t('cal.age')})+655
-              </p>
-              <Separator className='my-6' />
-              <p className='text-lg'>
-                {t('cal.yourValue')}:{' '}
-                <span className='font-bold text-cyan-600'>{bmr.toFixed(0)}</span>
-              </p>
-            </section>
-          </TabsContent>
-          <TabsContent value='tdee'>
-            <section className='py-6'>
-              <h3 className='mb-4 text-xl font-bold'>{t('tdee.fullName')}</h3>
-              <p className='pl-4'>{t('tdee.description')}</p>
-              <Separator className='my-6' />
-              <h4 className='mb-4 text-lg font-bold'>{t('cal.formula')}</h4>
-              <p className='pl-4'>TDEE = BMR x {t('tdee.activityLevel')}</p>
-              <p className='ml-4 mt-2 italic underline'>{t('tdee.activityLevelDescription')}</p>
-              <Separator className='my-6' />
-              <p className='mb-4 text-lg'>{t('cal.yourValue')}: </p>
-              <ul className='space-y-2 pl-4'>
-                <li>
-                  {t('tdee.level0')} =
-                  <span className='ml-2 font-bold text-cyan-500'>{(bmr * 1.2).toFixed(0)}</span>
-                </li>
-                <li>
-                  {t('tdee.level1')} =
-                  <span className='ml-2 font-bold text-cyan-500'>{(bmr * 1.375).toFixed(0)}</span>
-                </li>
-                <li>
-                  {t('tdee.level2')} =
-                  <span className='ml-2 font-bold text-cyan-500'>{(bmr * 1.55).toFixed(0)}</span>
-                </li>
-                <li>
-                  {t('tdee.level3')} =
-                  <span className='ml-2 font-bold text-cyan-500'>{(bmr * 1.725).toFixed(0)}</span>
-                </li>
-                <li>
-                  {t('tdee.level4')} =
-                  <span className='ml-2 font-bold text-cyan-500'>{(bmr * 1.9).toFixed(0)}</span>
-                </li>
-              </ul>
-            </section>
-          </TabsContent>
-        </Tabs>
+    <>
+      <h2 className='text-2xl font-bold'>{t('cal.basicInfo')}</h2>
+      <div className='grid w-full max-w-sm items-center gap-1.5'>
+        <Label htmlFor='age' className={cn({ 'text-muted-foreground': !inputStates.age })}>
+          {t('cal.age')}
+        </Label>
+        <Input type='number' id='age' value={age} onChange={e => setAge(+e.target.value)} />
       </div>
-    </div>
+      <div className='grid w-full max-w-sm items-center gap-1.5'>
+        <Label className={cn({ 'text-muted-foreground': !inputStates.sex })}>
+          {t('cal.sex')}
+        </Label>
+        <RadioGroup value={sex} onValueChange={sex => setSex(sex)}>
+          <div className='flex items-center space-x-2'>
+            <RadioGroupItem value='male' id='male' />
+            <Label htmlFor='male'>{t('cal.male')}</Label>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <RadioGroupItem value='female' id='female' />
+            <Label htmlFor='female'>{t('cal.female')}</Label>
+          </div>
+        </RadioGroup>
+      </div>
+      <div className='grid w-full max-w-sm items-center gap-1.5'>
+        <Label
+          htmlFor='bodyHeight'
+          className={cn({ 'text-muted-foreground': !inputStates.height })}
+        >
+          {t('cal.bodyHeight')}（cm）
+        </Label>
+        <Input
+          type='number'
+          id='bodyHeight'
+          value={bodyHeight}
+          onChange={e => setBodyHeight(+e.target.value)}
+        />
+      </div>
+      <div className='grid w-full max-w-sm items-center gap-1.5'>
+        <Label
+          htmlFor='bodyWeight'
+          className={cn({ 'text-muted-foreground': !inputStates.weight })}
+        >
+          {t('cal.bodyWeight')}（kg）
+        </Label>
+        <Input
+          type='number'
+          id='bodyWeight'
+          value={bodyWeight}
+          onChange={e => setBodyWeight(+e.target.value)}
+        />
+      </div>
+      <div className='grid w-full max-w-sm items-center gap-1.5'>
+        <Label htmlFor='bodyFat' className={cn({ 'text-muted-foreground': !inputStates.fat })}>
+          {t('cal.bodyFat')}（%）
+        </Label>
+        <Input
+          type='number'
+          id='bodyFat'
+          max={100}
+          value={bodyFat}
+          onChange={e => setBodyFat(+e.target.value)}
+        />
+      </div>
+      <div>
+        <Button onClick={triggerCalculate}>{t('cal.calculate')}</Button>
+      </div>
+
+      <Separator className='my-4' />
+
+      <h2 className='text-2xl font-bold'>{t('cal.result')}</h2>
+      <Tabs value={tab} onValueChange={tab => setTab(tab)}>
+        <TabsList className='grid sm:inline-grid sm:w-max h-max grid-cols-2 sm:grid-cols-4'>
+          {Object.entries(tabItems).map(item => (
+            <TabsTrigger value={item[0]} key={item[0]}>
+              {item[0].toUpperCase()}
+              {item[1] && `: ${item[1]}`}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        <TabsContent value='ffmi'>
+          <section className='py-6'>
+            <h3 className='mb-4 text-xl font-bold'>{t('ffmi.fullName')}</h3>
+            <p className='pl-4'>{t('ffmi.description')}</p>
+            <Separator className='my-6' />
+            <h4 className='mb-4 text-lg font-bold'>{t('cal.formula')}</h4>
+            <p className='pl-4'>
+              FFMI = ({t('cal.bodyWeight')} x (100% - {t('cal.bodyFat')})) / {t('cal.bodyHeight')}
+              <sup>2</sup>(m)
+              <br />
+              {t('ffmi.adjusted')} = FFMI + (6.1 x (1.8 - {t('cal.bodyHeight')}(m)))
+            </p>
+            <Separator className='my-6' />
+            <h4 className='mb-2 text-lg font-bold'>{t('cal.standard')}</h4>
+            <ul className='mb-4 inline-block list-inside list-disc'>
+              {ffmiRanges.map(({ label, condition }, index) => (
+                <li key={index} className={cn('rounded-sm px-4 py-1', condition && 'bg-primary')}>
+                  {label}
+                </li>
+              ))}
+            </ul>
+            <p className='text-lg'>
+              {t('cal.yourValue')}:{' '}
+              <span className='font-bold text-cyan-600'>{ffmi.toFixed(2)}</span>
+              <br />
+              {t('ffmi.adjusted')}:{' '}
+              <span className='font-bold text-cyan-600'>{affmi.toFixed(2)}</span>
+            </p>
+          </section>
+        </TabsContent>
+        <TabsContent value='bmi'>
+          <section className='py-6'>
+            <h3 className='mb-4 text-xl font-bold'>{t('bmi.fullName')}</h3>
+            <p className='pl-4'>{t('bmi.description')}</p>
+            <Separator className='my-6' />
+            <h4 className='mb-4 text-lg font-bold'>{t('cal.formula')}</h4>
+            <p className='pl-4'>
+              BMI = {t('cal.bodyWeight')}(kg) / {t('cal.bodyHeight')}(m)<sup>2</sup>
+            </p>
+            <Separator className='my-6' />
+            <h4 className='mb-2 text-lg font-bold'>{t('cal.standard')}</h4>
+            <ul className='mb-4 list-inside list-disc'>
+              {bmiRanges.map(({ label, condition }, index) => (
+                <li key={index} className={cn('rounded-sm py-1 pl-4', condition && 'bg-primary')}>
+                  {label}
+                </li>
+              ))}
+            </ul>
+            <p className='text-lg'>
+              {t('cal.yourValue')}:{' '}
+              <span className='font-bold text-cyan-600'>{bmi.toFixed(1)}</span>
+            </p>
+          </section>
+        </TabsContent>
+        <TabsContent value='bmr'>
+          <section className='py-6'>
+            <h3 className='mb-4 text-xl font-bold'>{t('bmr.fullName')}</h3>
+            <p className='pl-4'>{t('bmr.description')}</p>
+            <Separator className='my-6' />
+            <h4 className='mb-4 text-lg font-bold'>{t('cal.formula')}</h4>
+            <p className='pl-4'>
+              BMR({t('cal.male')})=(13.7×{t('cal.bodyWeight')}(kg))+(5.0×{t('cal.bodyHeight')}
+              (cm))-(6.8×{t('cal.age')})+66
+              <br />
+              BMR({t('cal.female')})=(9.6×{t('cal.bodyWeight')}(kg))+(1.8×{t('cal.bodyHeight')}
+              (cm))-(4.7×{t('cal.age')})+655
+            </p>
+            <Separator className='my-6' />
+            <p className='text-lg'>
+              {t('cal.yourValue')}:{' '}
+              <span className='font-bold text-cyan-600'>{bmr.toFixed(0)}</span>
+            </p>
+          </section>
+        </TabsContent>
+        <TabsContent value='tdee'>
+          <section className='py-6'>
+            <h3 className='mb-4 text-xl font-bold'>{t('tdee.fullName')}</h3>
+            <p className='pl-4'>{t('tdee.description')}</p>
+            <Separator className='my-6' />
+            <h4 className='mb-4 text-lg font-bold'>{t('cal.formula')}</h4>
+            <p className='pl-4'>TDEE = BMR x {t('tdee.activityLevel')}</p>
+            <p className='ml-4 mt-2 italic underline'>{t('tdee.activityLevelDescription')}</p>
+            <Separator className='my-6' />
+            <p className='mb-4 text-lg'>{t('cal.yourValue')}: </p>
+            <ul className='space-y-2 pl-4'>
+              <li>
+                {t('tdee.level0')} =
+                <span className='ml-2 font-bold text-cyan-500'>{(bmr * 1.2).toFixed(0)}</span>
+              </li>
+              <li>
+                {t('tdee.level1')} =
+                <span className='ml-2 font-bold text-cyan-500'>{(bmr * 1.375).toFixed(0)}</span>
+              </li>
+              <li>
+                {t('tdee.level2')} =
+                <span className='ml-2 font-bold text-cyan-500'>{(bmr * 1.55).toFixed(0)}</span>
+              </li>
+              <li>
+                {t('tdee.level3')} =
+                <span className='ml-2 font-bold text-cyan-500'>{(bmr * 1.725).toFixed(0)}</span>
+              </li>
+              <li>
+                {t('tdee.level4')} =
+                <span className='ml-2 font-bold text-cyan-500'>{(bmr * 1.9).toFixed(0)}</span>
+              </li>
+            </ul>
+          </section>
+        </TabsContent>
+      </Tabs>
+    </>
   )
 }
