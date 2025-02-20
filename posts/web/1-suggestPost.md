@@ -5,6 +5,13 @@ date: '2024-12-12'
 tags: 'Web,FrontEnd,前端'
 ---
 
+# Concepts
+
+## Architectures of modern Front-end applications
+- [Architectures of modern Front-end applications](https://blog.meetbrackets.com/architectures-of-modern-front-end-applications-8859dfe6c12e): 探討現代前端專案的資料夾結構，這是我在公司一直推廣的議題，見識過許多只照官方預設結構發展的專案，最後演變成可怕的混亂局面，在一開始就設計方便擴展的資料夾結構對於中大型專案會有許多好處。
+
+
+---
 # CSS
 
 ## CSS Shape

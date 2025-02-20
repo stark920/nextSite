@@ -29,12 +29,8 @@ const mainLinks: SidebarNav[] = [
       },
       {
         title: 'trainingPlan',
-        url: '#',
+        url: '/trainingPlan',
       },
-      // {
-      //   title: 'antiAging',
-      //   url: '#',
-      // },
       {
         title: 'recommendedResources',
         url: '/recommendedResources',

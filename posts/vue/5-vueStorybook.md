@@ -268,6 +268,18 @@ setup(app => app.use(i18n))
 
 const locale = ref<typeof availableLocales[number]>('en')
 
+export const globalTypes = {
+  locale: {
+    name: 'Locale',
+    description: 'Global locale for i18n',
+    defaultValue: 'en',
+    toolbar: {
+      icon: 'globe',
+      items: availableLocales.map(locale => ({ value: locale, title: locale })),
+    },
+  },
+}
+
 export const decorators = [
   // ...
   (story, context) => {
